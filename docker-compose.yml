@@ -1,0 +1,35 @@
+version: "3.9"
+
+networks:
+  lab:
+
+services:
+  db:
+    image: postgres:15
+    env_file: .env
+    container_name: lab_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/01_init.sql
+      - ./db/triggers.sql:/docker-entrypoint-initdb.d/02_triggers.sql
+      - ./db/indexes.sql:/docker-entrypoint-initdb.d/03_indexes.sql
+      - ./db/insert_data.sql:/docker-entrypoint-initdb.d/04_insert_data.sql
+      - ./exports:/exports
+    ports:
+      - "5432:5432"
+    networks:
+      - lab
+
+  pgadmin:
+    image: dpage/pgadmin4
+    env_file: .env
+    container_name: lab_pg
+    ports:
+      - "5050:80"
+    depends_on:
+      - db
+    networks:
+      - lab
+
+volumes:
+  postgres_data:
