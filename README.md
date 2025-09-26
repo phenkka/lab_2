@@ -22,7 +22,7 @@ PGADMIN_DEFAULT_PASSWORD=your_pgadmin_password
 Важно:
 
 Последние две строки (PGADMIN_DEFAULT_EMAIL и PGADMIN_DEFAULT_PASSWORD) используются для входа в веб-интерфейс pgAdmin по адресу http://localhost:5050/.
-Первые пять строк нужны для подключения к серверу PostgreSQL внутри pgAdmin.
+Первые пять строк нужны для подключения к серверу PostgreSQL внутри pgAdmin. (для поднятия контейнеров я использовал приложение Docker Desktop, придется скачать с официального сайта)
 
 ### 2. Поднимите контейнеры
 
