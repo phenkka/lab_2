@@ -1,13 +1,35 @@
-Для запуска проекта нужно сделать следующее:
-1. Создать файл .env на уровне с файлом docker-compose.yml. В нем должно лежать следующее:
-   1. POSTGRES_DB=...
-   2. POSTGRES_USER=...
-   3. POSTGRES_PASSWORD=...
-   4. POSTGRES_HOST=...
-   5. POSTGRES_PORT=...
-   6. PGADMIN_DEFAULT_EMAIL=...
-   7. PGADMIN_DEFAULT_PASSWORD=...
+## Запуск проекта с Docker
 
-Последние две строчки будут использоваться для захода на web pgAdmin по ссылке http://localhost:5050/. Первые пять будут использоваться при добавлении сервера
-2. После создания .env файла надо будет поднять контейнеры. Остаемся в тойже директории, где лежит docker-compose.yml и вводим команду - docker-compose up --build
-3. Все, все успешно работает и можно проверять задание.
+Для запуска проекта выполните следующие шаги:
+
+### 1. Создайте файл `.env`
+
+Создайте файл `.env` в той же директории, где находится `docker-compose.yml`, и добавьте в него следующие переменные:
+
+```env
+# Настройки PostgreSQL
+POSTGRES_DB=your_database_name
+POSTGRES_USER=your_username
+POSTGRES_PASSWORD=your_password
+POSTGRES_HOST=your_host
+POSTGRES_PORT=your_port
+
+# Настройки pgAdmin
+PGADMIN_DEFAULT_EMAIL=your_email@example.com
+PGADMIN_DEFAULT_PASSWORD=your_pgadmin_password
+```
+
+Важно:
+
+Последние две строки (PGADMIN_DEFAULT_EMAIL и PGADMIN_DEFAULT_PASSWORD) используются для входа в веб-интерфейс pgAdmin по адресу http://localhost:5050/.
+Первые пять строк нужны для подключения к серверу PostgreSQL внутри pgAdmin.
+
+### 2. Поднимите контейнеры
+
+Находясь в директории с docker-compose.yml, выполните команду:
+
+```docker-compose up --build```
+
+### 3. Проверка
+
+Если контейнеры поднялись без ошибок, проект готов к работе и можно приступать к выполнению заданий.
