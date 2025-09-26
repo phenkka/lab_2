@@ -1,0 +1,7 @@
+0 2 * * *   root sh /scripts/backup_daily.sh >> /backups/cron_test.log 2>&1
+
+30 2 * * *  root sh /scripts/reindex_daily.sh >> /backups/cron_test.log 2>&1
+
+0 3 * * *   root sh /scripts/optimize_daily.sh >> /backups/cron_test.log 2>&1
+
+0 4 * * 0   root sh /scripts/integrity_check.sh >> /backups/cron_test.log 2>&1

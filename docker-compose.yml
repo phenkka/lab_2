@@ -31,5 +31,19 @@ services:
     networks:
       - lab
 
+  cron:
+    image: debian:stable-slim
+    container_name: lab_cron
+    volumes:
+      - ./scripts:/scripts
+      - ./backups:/backups
+      - ./cronjobs:/etc/cron.d
+    env_file: .env
+    command: bash -c "apt-get update && apt-get install -y postgresql-client cron && cron -f"
+    depends_on:
+      - db
+    networks:
+      - lab
+
 volumes:
   postgres_data:
